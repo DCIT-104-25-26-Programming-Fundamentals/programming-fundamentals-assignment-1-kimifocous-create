@@ -43,41 +43,29 @@ def is_prime(number):
     divisors other than 1 and itself.
     """
  
-    # Numbers less than 2 are never prime (this covers 0, 1, and
-    # negative numbers).
     if number < 2:
         return False
  
-    # 2 is the only even prime number. Handle it directly, then we
-    # can skip all other even numbers below.
     if number == 2:
         return True
- 
-    # Any other even number cannot be prime.
+
     if number % 2 == 0:
         return False
  
-    # Check odd divisors from 3 up to the square root of 'number'.
-    # If 'number' is divisible by anything in this range, it is
-    # not prime. We only need to check up to sqrt(number) because
-    # a larger factor would have to be paired with a smaller one
-    # that we would already have found.
     divisor = 3
     while divisor * divisor <= number:
         if number % divisor == 0:
             return False
         divisor += 2
  
-    # No divisors found — the number is prime.
     return True
  
  
 def main():
-    # Get input from the user and convert it to an integer.
+
     user_input = input("Enter a number: ")
     number = int(user_input)
- 
-    # Call the function and print the appropriate message.
+
     if is_prime(number):
         print(f"{number} is a prime number.")
     else:
